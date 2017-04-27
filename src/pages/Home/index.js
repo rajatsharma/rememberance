@@ -1,5 +1,5 @@
 import { injectReducer } from '../../store/reducers'
-import { injectEpic } from '../../store/epics'
+import { injectSagas } from '../../store/sagas'
 
 // Sync route definition
 export default(store) => ({
@@ -11,10 +11,10 @@ export default(store) => ({
           dependencies for bundling   */
       const container = require('./container').default
       const reducer = require('./reducer').default
-      const epics = require('./epic').default
+      const sagas = require('./sagas').default
       /*  Add the reducer to the store on key 'counter'  */
       injectReducer(store, { key: 'home', reducer })
-      injectEpic(store, { epics })
+      injectSagas(store, sagas)
       /*  Return getComponent   */
       cb(null, container)
 

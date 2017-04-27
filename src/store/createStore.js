@@ -1,26 +1,26 @@
 import { applyMiddleware, compose, createStore } from 'redux'
-import { createEpicMiddleware } from 'redux-observable'
 import { reactReduxFirebase } from 'react-redux-firebase'
 import { browserHistory } from 'react-router'
 import makeRootReducer from './reducers'
-import createRootEpic from './epics'
 import { updateLocation } from './location'
 import { firebase as fbConfig, reduxFirebase as reduxConfig } from '../fireconfig'
+import createSagaMiddleware from 'redux-saga'
 
-const epicMiddleware = createEpicMiddleware(createRootEpic())
+const sagaMiddleware = createSagaMiddleware()
 
 export default(initialState = {}) => {
   // ======================================================
   // Middleware Configuration
   // ======================================================
   const middleware = [
-    epicMiddleware
+    sagaMiddleware
   ]
 
   // ======================================================
   // Store Enhancers
   // ======================================================
-  const enhancers = []
+  const enhancers = [
+  ]
 
   let composeEnhancers = compose
 
@@ -44,7 +44,8 @@ export default(initialState = {}) => {
     )
   )
   store.asyncReducers = {}
-  store.replaceEpic = epicMiddleware.replaceEpic
+  store.runSaga = sagaMiddleware.run
+  // store.sagas = []
   // To unsubscribe, invoke `store.unsubscribeHistory()` anytime
   store.unsubscribeHistory = browserHistory.listen(updateLocation(store))
 

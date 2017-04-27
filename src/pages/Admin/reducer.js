@@ -4,7 +4,7 @@ import { update } from 'ramda'
 const ACTION_HANDLERS = {
   HOMEACTIONGOTMOVIES: (state, action) => Object.assign({}, state, { movies: action.payload }),
   EPICCHECKSUCCESS: (state, action) => Object.assign({}, state, { epicWorking: true }),
-  '@@reactReduxFirebase/SET': (state, { path, ordered, data, timestamp, requesting, requested }) => Object.assign({},
+  FIREABASESYNCED: (state, { path, ordered, data, timestamp, requesting, requested }) => Object.assign({},
     state, { firebaseObject: { path, ordered, data, timestamp, requesting, requested } }
   ),
   CHANGEPOSTERURL: (state, action) => Object.assign({},
