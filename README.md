@@ -11,3 +11,24 @@ Redux without
 - ImmutableJS uses Pure Functions to manipulate store instead
 
 An Awesome boilerplate to get things done with Redux faster.
+
+Requires Firebase Configuration. Add this as `src/fireconfig.js`
+
+```js
+export const firebase = {
+  apiKey: 'xxxxxxxxxxxxxx',
+  authDomain: 'xxxx.firebaseapp.com',
+  databaseURL: 'https://xxxx.firebaseio.com',
+  projectId: 'xxxxx',
+  storageBucket: 'xxxx.appspot.com',
+  messagingSenderId: 'xxxxxxxxxxxx'
+}
+
+export const reduxFirebase = {
+  enableLogging: false // enable/disable Firebase Database Logging
+}
+
+export const env = 'development'
+export default { firebase, reduxFirebase, env }
+
+```
