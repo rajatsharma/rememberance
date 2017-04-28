@@ -12,5 +12,4 @@ export const reduxFirebase = {
 }
 
 export const env = 'development'
-
 export default { firebase, reduxFirebase, env }

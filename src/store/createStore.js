@@ -1,13 +1,15 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import { reactReduxFirebase } from 'react-redux-firebase'
-import { browserHistory } from 'react-router'
+// import { browserHistory } from 'react-router'
+import { hashHistory } from 'react-router'
 import makeRootReducer from './reducers'
+import CoreSaga from '../core/coresagas'
 import { updateLocation } from './location'
 import { firebase as fbConfig, reduxFirebase as reduxConfig } from '../fireconfig'
 import createSagaMiddleware from 'redux-saga'
+import persistState from 'redux-localstorage'
 
 const sagaMiddleware = createSagaMiddleware()
-
 export default(initialState = {}) => {
   // ======================================================
   // Middleware Configuration
@@ -20,6 +22,7 @@ export default(initialState = {}) => {
   // Store Enhancers
   // ======================================================
   const enhancers = [
+    persistState('core')
   ]
 
   let composeEnhancers = compose
@@ -43,11 +46,14 @@ export default(initialState = {}) => {
       ...enhancers
     )
   )
+
+  sagaMiddleware.run(CoreSaga)
+
   store.asyncReducers = {}
   store.runSaga = sagaMiddleware.run
   // store.sagas = []
   // To unsubscribe, invoke `store.unsubscribeHistory()` anytime
-  store.unsubscribeHistory = browserHistory.listen(updateLocation(store))
+  store.unsubscribeHistory = hashHistory.listen(updateLocation(store))
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {

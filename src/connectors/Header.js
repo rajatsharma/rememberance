@@ -11,12 +11,12 @@ import Toast from 'grommet/components/Toast'
 
 export const AppHeader = props => (
   <Header justify="center" colorIndex="grey-1">
+    <Box>
+      {props.loader && <Spinning size="medium" />}
+    </Box>
     <Box size={{ width: { max: 'xxlarge' } }} direction="row"
       responsive={false} justify="start" align="center"
       pad={{ horizontal: 'medium' }} flex="grow">
-      <Box pad={{ horizontal: 'medium' }}>
-        {props.loader && <Spinning size="medium" />}
-      </Box>
 
       <Title>
         <Link to="/">
