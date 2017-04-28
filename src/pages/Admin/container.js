@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-// import { pick } from 'ramda'
 import Admin from './main'
 import Authenticated from '../../connectors/authenticated'
 
