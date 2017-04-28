@@ -7,6 +7,7 @@ import Hero from 'grommet/components/Hero'
 import { firebaseConnect, dataToJS } from 'react-redux-firebase'
 // import FirebaseConnector from '../../futils/firebaseconnector'
 import TextInput from 'grommet/components/TextInput'
+import Button from 'grommet/components/Button'
 
 export class AdminView extends Component {
   render () {
@@ -14,14 +15,37 @@ export class AdminView extends Component {
     return (
       <Box>
         {firebaseData && firebaseData.map((x, i) =>
-          <Hero key={i} size="large" backgroundImage={x}
+          <Hero key={i} size="large" backgroundImage={x.poster}
             colorIndex="dark"
-            justify={i % 2 === 0 ? 'start' : 'end'}>
+            justify={x.crawlPosition}>
             <Card
               colorIndex="grey-1"
               size="xlarge"
             >
-              <TextInput value={x} onDOMChange={(x) => emitToStore(i, x.target.value)} />
+              <TextInput value={x.poster} onDOMChange={(x) => emitToStore(i, 'poster', x.target.value)} />
+              <Box direction="row">
+                <Box pad="medium">
+                  <Button
+                    label="Start"
+                    onClick={() => emitToStore(i, 'crawlPosition', 'start')}
+                    primary={x.crawlPosition === 'start'}
+                  />
+                </Box>
+                <Box pad="medium">
+                  <Button
+                    label="Center"
+                    onClick={() => emitToStore(i, 'crawlPosition', 'center')}
+                    primary={x.crawlPosition === 'center'}
+                  />
+                </Box>
+                <Box pad="medium">
+                  <Button
+                    label="End"
+                    onClick={() => emitToStore(i, 'crawlPosition', 'end')}
+                    primary={x.crawlPosition === 'end'}
+                  />
+                </Box>
+              </Box>
             </Card>
           </Hero>)}
       </Box>

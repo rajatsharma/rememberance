@@ -13,8 +13,8 @@ export class HomeView extends Component {
     return (
       <Box>
         {this.props.posters && this.props.movies.map((x, i) =>
-          <Hero key={i} size="xlarge" backgroundImage={this.props.posters[i]} colorIndex="dark"
-            justify={i % 2 === 0 ? 'start' : 'end'}>
+          <Hero key={i} size="xlarge" backgroundImage={this.props.posters[i].poster} colorIndex="dark"
+            justify={this.props.posters[i].crawlPosition}>
             <Card
               colorIndex="grey-1"
               heading={

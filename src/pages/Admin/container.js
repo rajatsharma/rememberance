@@ -5,7 +5,7 @@ import Authenticated from '../../connectors/authenticated'
 
 const mapDispatchToProps = dispatch => ({
   emitToFirebase: (path, value) => dispatch({ type:'FIREBASEEMITPOSTERURL', payload:{ path, value } }),
-  emitToStore: (path, value) => dispatch({ type:'CHANGEPOSTERURL', payload:{ path, value } })
+  emitToStore: (path, key, value) => dispatch({ type:'CHANGEPOSTERURL', payload:{ path, key, value } })
 })
 
 const mapStateToProps = state => ({

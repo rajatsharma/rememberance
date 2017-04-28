@@ -4,10 +4,8 @@ import { getFirebase } from 'react-redux-firebase'
 
 export function* updateFirebase (action) {
   yield call(delay, 1000)
-  getFirebase().set(`posters/${action.payload.path}`, action.payload.value)
-  console.log('updated firebase')
+  getFirebase().set(`posters/${action.payload.path}/${action.payload.key}`, action.payload.value)
   yield put({ type: 'SHOWHIDETOASTER', payload: true })
-  console.log('updated firebase toaster')
   yield call(delay, 1000)
   yield put({ type: 'SHOWHIDETOASTER', payload: false })
 }

@@ -11,7 +11,11 @@ const ACTION_HANDLERS = {
     state, {
       firebaseObject: {
         ...state.firebaseObject,
-        data: update(action.payload.path, action.payload.value, state.firebaseObject.data)
+        data: update(
+          action.payload.path,
+          { ...state.firebaseObject.data[action.payload.path], [action.payload.key]:action.payload.value },
+          state.firebaseObject.data
+         )
       }
     })
 }
