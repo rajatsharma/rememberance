@@ -16,6 +16,7 @@ export class HomeView extends Component {
           <Hero key={i} size="xlarge" backgroundImage={this.props.posters[i].poster} colorIndex="dark"
             justify={this.props.posters[i].crawlPosition}>
             <Card
+              label={`Episode ${i + 1}`}
               colorIndex="grey-1"
               heading={
                 <Heading strong>

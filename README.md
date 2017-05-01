@@ -1,6 +1,6 @@
 # Eldritch
 
-![Dark Side](https://s-media-cache-ak0.pinimg.com/736x/34/39/fd/3439fddbe50de2f8b99bb032c5cc9650.jpg)
+![Dark Side](https://www.nerdstickers.com.br/loja/arquivos/2016/06/STK-292-Adesivo-Darth-Vader-Dark-Side-Nerd-Stickers.png)
 
 Enter the Dark side of Redux and experience the raw power of Pure Functional Programming
 
