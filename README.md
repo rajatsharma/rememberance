@@ -32,3 +32,5 @@ export const env = 'development'
 export default { firebase, reduxFirebase, env }
 
 ```
+
+[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
