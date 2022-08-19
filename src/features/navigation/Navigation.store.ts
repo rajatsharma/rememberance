@@ -10,7 +10,7 @@ const initialState: NavigationState = {
 };
 
 export const navigationSlice = createSlice({
-  name: "counter",
+  name: "navigation",
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
